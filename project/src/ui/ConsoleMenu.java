@@ -6,6 +6,7 @@ import model.Task;
 import service.TaskService;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleMenu {
@@ -80,7 +81,6 @@ public class ConsoleMenu {
 
 
 
-
     private void AddTask(){
         System.out.println("Name of the Task:");
         String name = scanner.nextLine().toLowerCase();
@@ -129,5 +129,13 @@ public class ConsoleMenu {
 
         service.addTask(newTask);
         System.out.println("Task added!");
+    }
+
+
+
+
+    private void ListAllTasks(){
+        List<Task> tasks = service.listAllTasks();
+        tasks.forEach(System.out::println);
     }
 }
