@@ -3,6 +3,8 @@ package service;
 import model.Task;
 import repository.TaskRepository;
 
+import java.util.List;
+
 public class TaskService {
     TaskRepository repository;
 
@@ -15,5 +17,11 @@ public class TaskService {
 
     public void addTask(Task task){
         repository.add(task);
+    }
+
+
+
+    public List<Task> listAllTasks(){
+        return repository.findAll();
     }
 }
