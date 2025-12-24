@@ -1,5 +1,6 @@
 package service;
 
+import model.Status;
 import model.Task;
 import repository.TaskRepository;
 
@@ -23,5 +24,14 @@ public class TaskService {
 
     public List<Task> listAllTasks(){
         return repository.findAll();
+    }
+
+
+
+    public List<Task> listByStatus(Status status){
+        return repository.findAll()
+                .stream()
+                .filter(task -> task.getStatus() == status)
+                .toList();
     }
 }
