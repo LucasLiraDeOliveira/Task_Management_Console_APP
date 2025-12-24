@@ -1,5 +1,6 @@
 package service;
 
+import model.Task;
 import repository.TaskRepository;
 
 public class TaskService {
@@ -8,5 +9,11 @@ public class TaskService {
 
     public TaskService(TaskRepository repository) {
         this.repository = repository;
+    }
+
+
+
+    public void addTask(Task task){
+        repository.add(task);
     }
 }
