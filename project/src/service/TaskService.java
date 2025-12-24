@@ -22,6 +22,15 @@ public class TaskService {
 
 
 
+    public void removeTask(String taskName){
+        repository.findAll().stream()    // Stream<Task>
+                .filter(task -> task.getName().equalsIgnoreCase(taskName))  //filter returns a Stream
+                .findFirst()   //ends the stream, returns an Optional (Optional → value may exist or not)
+                .ifPresent(repository::remove);   //executes only if value exists
+    }
+
+
+    
     public List<Task> listAllTasks(){
         return repository.findAll();
     }
