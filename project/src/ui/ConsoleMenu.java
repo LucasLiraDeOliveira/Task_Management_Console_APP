@@ -68,6 +68,19 @@ public class ConsoleMenu {
     }
 
 
+    private void RemoveTask(){
+        System.out.println("Which task do you want to remove?");
+        String taskName = scanner.nextLine().toLowerCase();
+        boolean condition = true;
+
+        while (condition){
+            System.out.println("nome da task: " + taskName);
+            condition = false;
+        }
+
+        service.removeTask(taskName);
+        System.out.println("Task removed!");
+    }
 
 
     private void AddTask(){
