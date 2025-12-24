@@ -9,6 +9,6 @@ public class Main {
         TaskService service = new TaskService(repository);
         ConsoleMenu menu = new ConsoleMenu(service);
 
-
+        menu.start();
     }
 }
