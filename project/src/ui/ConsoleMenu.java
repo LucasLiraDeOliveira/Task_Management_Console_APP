@@ -58,7 +58,8 @@ public class ConsoleMenu {
                 case 0:
                     running = false;
                     break;
-                default -> System.out.println("Invalid option");
+                default:
+                    System.out.println("Invalid option");
             }
         }
     }
