@@ -40,26 +40,13 @@ public class ConsoleMenu {
 
 
             switch (option) {
-                case 1:
-                    AddTask();
-                    break;
-                case 2:
-                    ListAllTasks();
-                    break;
-                case 3:
-                    ListTaskFiltered(Status.TODO);
-                    break;
-                case 4:
-                    ListTaskFiltered(Status.ONGOING);
-                    break;
-                case 5:
-                    ListTaskFiltered(Status.DONE);
-                    break;
-                case 0:
-                    running = false;
-                    break;
-                default:
-                    System.out.println("Invalid option");
+                case 1 -> AddTask();
+                case 2 -> ListAllTasks();
+                case 3 -> ListTaskFiltered(Status.TODO);
+                case 4 -> ListTaskFiltered(Status.ONGOING);
+                case 5 -> ListTaskFiltered(Status.DONE);
+                case 0 -> running = false;
+                default -> System.out.println("Invalid option");
             }
         }
     }
