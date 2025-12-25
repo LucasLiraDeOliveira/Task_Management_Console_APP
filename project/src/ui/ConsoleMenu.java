@@ -156,4 +156,27 @@ public class ConsoleMenu {
         List<Task> tasksFiltereed = service.listByPriority(priority);
         tasksFiltereed.forEach(System.out::println);
     }
+
+
+    private void ChangeStatus(){
+        boolean condition = true;
+        Status newStatus = null;
+
+        System.out.println("Which task do you want to change the Status?");
+        String taskName = scanner.nextLine().toLowerCase();
+
+        while (condition){
+            System.out.println("What's the new Status you want it? (TODO - ONGOING - DONE)");
+            newStatus = checkStatus(scanner.nextLine().toUpperCase());
+
+            if (newStatus.equals(Status.WRONG)) {
+                System.out.println("Wrong status typed! Please write one of the correct options!");
+                continue;
+            }
+            condition = false;
+        }
+
+        service.changeStatus(taskName, newStatus);
+        System.out.println("Task's status updated!");
+    }
 }
