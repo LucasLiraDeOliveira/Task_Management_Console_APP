@@ -1,5 +1,6 @@
 package service;
 
+import model.Priority;
 import model.Status;
 import model.Task;
 import repository.TaskRepository;
@@ -41,6 +42,15 @@ public class TaskService {
         return repository.findAll()
                 .stream()
                 .filter(task -> task.getStatus() == status)
+                .toList();
+    }
+
+
+
+    public List<Task> listByPriority(Priority priority){
+        return repository.findAll()
+                .stream()
+                .filter(task -> task.getPriority() == priority)
                 .toList();
     }
 }
