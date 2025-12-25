@@ -43,9 +43,9 @@ public class ConsoleMenu {
                 case 1 -> AddTask();
                 case 2 -> RemoveTask();
                 case 3 -> ListAllTasks();
-                case 4 -> ListTaskFiltered(Status.TODO);
-                case 5 -> ListTaskFiltered(Status.ONGOING);
-                case 6 -> ListTaskFiltered(Status.DONE);
+                case 4 -> ListTaskFilteredByStatus(Status.TODO);
+                case 5 -> ListTaskFilteredByStatus(Status.ONGOING);
+                case 6 -> ListTaskFilteredByStatus(Status.DONE);
                 case 0 -> running = false;
                 default -> System.out.println("Invalid option");
             }
@@ -144,7 +144,7 @@ public class ConsoleMenu {
 
 
 
-    private void ListTaskFiltered(Status status){
+    private void ListTaskFilteredByStatus(Status status){
         List<Task> tasksFiltereed = service.listByStatus(status);
         tasksFiltereed.forEach(System.out::println);
     }

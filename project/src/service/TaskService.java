@@ -30,7 +30,7 @@ public class TaskService {
     }
 
 
-    
+
     public List<Task> listAllTasks(){
         return repository.findAll();
     }
