@@ -33,9 +33,10 @@ public class ConsoleMenu {
 
         while (running){
             System.out.println("\n\n--- Personal Task Manager ---");
-            System.out.println("1 - Add a Task\n2 - Remove a task\n3 - List all tasks\n4 - List tasks with TODO " +
-                    "status\n5 - List tasks with ONGOING status\n6 - List tasks with DONE status\n0 - To exit the " +
-                    "APP");
+            System.out.println("1 - Add a Task\n2 - Remove a task\n3 - List all tasks\n4 - List tasks by TODO  " +
+                    "status\n5 - List tasks by ONGOING status\n6 - List tasks by DONE status\\n7 - List tasks  by " +
+                    "Priority LOW\\n8 - List tasks by Priority MEDIUM\\n9 - List tasks by Priority HIGH\n0 - To exit" +
+                    " the APP");
             int option = readOption();
 
 
@@ -46,6 +47,9 @@ public class ConsoleMenu {
                 case 4 -> ListTaskFilteredByStatus(Status.TODO);
                 case 5 -> ListTaskFilteredByStatus(Status.ONGOING);
                 case 6 -> ListTaskFilteredByStatus(Status.DONE);
+                case 6 -> ListTaskFilteredByPriority(Priority.LOW);
+                case 6 -> ListTaskFilteredByPriority(Priority.MEDIUM);
+                case 6 -> ListTaskFilteredByPriority(Priority.HIGH);
                 case 0 -> running = false;
                 default -> System.out.println("Invalid option");
             }
