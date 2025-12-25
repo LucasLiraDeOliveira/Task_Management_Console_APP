@@ -189,4 +189,27 @@ public class ConsoleMenu {
             default -> Status.WRONG;
         };
     }
+
+
+    private void ChangePriority(){
+        boolean condition = true;
+        Priority newPriority = null;
+
+        System.out.println("Which task do you want to change the Status?");
+        String taskName = scanner.nextLine().toLowerCase();
+
+        while (condition){
+            System.out.println("What's the new Priority you want to give it? (LOW - MEDIUM - HIGH)");
+            newPriority = checkPriority(scanner.nextLine().toUpperCase().trim());
+
+            if (newPriority.equals(Status.WRONG)) {
+                System.out.println("Wrong status typed! Please write one of the correct options!");
+                continue;
+            }
+            condition = false;
+        }
+
+        service.changePriority(taskName, newPriority);
+        System.out.println("Task's status updated!");
+    }
 }
