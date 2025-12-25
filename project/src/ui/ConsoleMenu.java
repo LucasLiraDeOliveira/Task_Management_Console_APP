@@ -212,4 +212,14 @@ public class ConsoleMenu {
         service.changePriority(taskName, newPriority);
         System.out.println("Task's status updated!");
     }
+
+
+    private Priority checkPriority(String priorityString){
+        return switch (priorityString) {
+            case "LOW" -> Priority.LOW;
+            case "MEDIUM" -> Priority.MEDIUM;
+            case "HIGH" -> Priority.HIGH;
+            default -> Priority.WRONG;
+        };
+    }
 }
