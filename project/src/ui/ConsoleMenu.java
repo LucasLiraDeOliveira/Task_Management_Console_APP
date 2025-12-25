@@ -138,18 +138,20 @@ public class ConsoleMenu {
     }
 
 
-
-
     private void ListAllTasks(){
         List<Task> tasks = service.listAllTasks();
         tasks.forEach(System.out::println);
     }
 
 
-
-
     private void ListTaskFilteredByStatus(Status status){
         List<Task> tasksFiltereed = service.listByStatus(status);
+        tasksFiltereed.forEach(System.out::println);
+    }
+
+
+    private void ListTaskFilteredByPriority(Priority priority){
+        List<Task> tasksFiltereed = service.listByPriority(priority);
         tasksFiltereed.forEach(System.out::println);
     }
 }
