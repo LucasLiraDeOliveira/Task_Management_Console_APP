@@ -34,9 +34,8 @@ public class ConsoleMenu {
         while (running){
             System.out.println("\n\n--- Personal Task Manager ---");
             System.out.println("1 - Add a Task\n2 - Remove a task\n3 - List all tasks\n4 - List tasks by a " +
-                    "specifc status\n7 - List tasks by Priority LOW\\n8 - List tasks by Priority MEDIUM\\n9 - List " +
-                    "tasks by Priority HIGH\n10 - Change Status of a Task\n11 - Change Priority of a Task\n0 - To " +
-                    "exit the APP");
+                    "specific status\n5 - List tasks by a specific Priority\n6 - Change Status of a Task\n7 - Change " +
+                    "Priority of a Task\n0 - To exit the APP");
             int option = readOption();
 
 
@@ -45,11 +44,9 @@ public class ConsoleMenu {
                 case 2 -> RemoveTask();
                 case 3 -> ListAllTasks();
                 case 4 -> ListTaskFilteredByStatus();
-                case 7 -> ListTaskFilteredByPriority(Priority.LOW);
-                case 8 -> ListTaskFilteredByPriority(Priority.MEDIUM);
-                case 9 -> ListTaskFilteredByPriority(Priority.HIGH);
-                case 10 -> ChangeStatus();
-                case 11 -> ChangePriority();
+                case 5 -> ListTaskFilteredByPriority();
+                case 6 -> ChangeStatus();
+                case 7 -> ChangePriority();
                 case 0 -> running = false;
                 default -> System.out.println("Invalid option");
             }
@@ -144,28 +141,48 @@ public class ConsoleMenu {
     }
 
 
-    private void ListTaskFilteredByStatus(Status status){
+    private void ListTaskFilteredByStatus(){
+        Status status = checkStatus();
         List<Task> tasksFiltereed = service.listByStatus(status);
         tasksFiltereed.forEach(System.out::println);
     }
 
 
-    private void ListTaskFilteredByPriority(Priority priority){
+    private void ListTaskFilteredByPriority(){
+        Priority priority = checkPriority();
         List<Task> tasksFiltereed = service.listByPriority(priority);
         tasksFiltereed.forEach(System.out::println);
     }
 
 
     private void ChangeStatus(){
-        boolean condition = true;
-        Status newStatus = null;
-
+        Status newStatus;
         System.out.println("Which task do you want to change the Status?");
         String taskName = scanner.nextLine().toLowerCase();
 
+        newStatus = checkStatus();
+
+        service.changeStatus(taskName, newStatus);
+        System.out.println("Task's status updated!");
+    }
+
+
+    private Status checkStatus(){
+        boolean condition = true;
+        Scanner checkScanner = new Scanner(System.in);
+        String statusString;
+        Status newStatus = null;
+
         while (condition){
             System.out.println("What's the new Status you want it? (TODO - ONGOING - DONE)");
-            newStatus = checkStatus(scanner.nextLine().toUpperCase());
+            statusString = checkScanner.nextLine().toUpperCase();
+
+            switch (statusString) {
+                case "TODO" -> newStatus = Status.TODO;
+                case "ONGOING" -> newStatus = Status.ONGOING;
+                case "DONE" -> newStatus = Status.DONE;
+                default -> newStatus = Status.WRONG;
+            };
 
             if (newStatus.equals(Status.WRONG)) {
                 System.out.println("Wrong status typed! Please write one of the correct options!");
@@ -174,31 +191,38 @@ public class ConsoleMenu {
             condition = false;
         }
 
-        service.changeStatus(taskName, newStatus);
-        System.out.println("Task's status updated!");
-    }
-
-
-    private Status checkStatus(String statusString){
-        return switch (statusString.toUpperCase()) {
-            case "TODO" -> Status.TODO;
-            case "ONGOING" -> Status.ONGOING;
-            case "DONE" -> Status.DONE;
-            default -> Status.WRONG;
-        };
+        return newStatus;
     }
 
 
     private void ChangePriority(){
-        boolean condition = true;
-        Priority newPriority = null;
-
+        Priority newPriority;
         System.out.println("Which task do you want to change the Status?");
         String taskName = scanner.nextLine().toLowerCase();
 
+        newPriority = checkPriority();
+
+        service.changePriority(taskName, newPriority);
+        System.out.println("Task's status updated!");
+    }
+
+
+    private Priority checkPriority(){
+        boolean condition = true;
+        Scanner checkScanner = new Scanner(System.in);
+        String priorityString;
+        Priority newPriority = null;
+
         while (condition){
             System.out.println("What's the new Priority you want to give it? (LOW - MEDIUM - HIGH)");
-            newPriority = checkPriority(scanner.nextLine().toUpperCase().trim());
+            priorityString = checkScanner.nextLine().toUpperCase().trim();
+
+            switch (priorityString) {
+                case "LOW" -> newPriority = Priority.LOW;
+                case "MEDIUM" -> newPriority = Priority.MEDIUM;
+                case "HIGH" -> newPriority = Priority.HIGH;
+                default -> newPriority = Priority.WRONG;
+            };
 
             if (newPriority.equals(Status.WRONG)) {
                 System.out.println("Wrong status typed! Please write one of the correct options!");
@@ -207,17 +231,6 @@ public class ConsoleMenu {
             condition = false;
         }
 
-        service.changePriority(taskName, newPriority);
-        System.out.println("Task's status updated!");
-    }
-
-
-    private Priority checkPriority(String priorityString){
-        return switch (priorityString) {
-            case "LOW" -> Priority.LOW;
-            case "MEDIUM" -> Priority.MEDIUM;
-            case "HIGH" -> Priority.HIGH;
-            default -> Priority.WRONG;
-        };
+        return newPriority;
     }
 }
