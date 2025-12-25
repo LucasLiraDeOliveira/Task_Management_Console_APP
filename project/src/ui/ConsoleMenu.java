@@ -33,10 +33,10 @@ public class ConsoleMenu {
 
         while (running){
             System.out.println("\n\n--- Personal Task Manager ---");
-            System.out.println("1 - Add a Task\n2 - Remove a task\n3 - List all tasks\n4 - List tasks by TODO  " +
-                    "status\n5 - List tasks by ONGOING status\n6 - List tasks by DONE status\\n7 - List tasks  by " +
-                    "Priority LOW\\n8 - List tasks by Priority MEDIUM\\n9 - List tasks by Priority HIGH\n10 - Change " +
-                    "Status of a Task\n11 - Change Priority of a Task\n0 - To exit the APP");
+            System.out.println("1 - Add a Task\n2 - Remove a task\n3 - List all tasks\n4 - List tasks by a " +
+                    "specifc status\n7 - List tasks by Priority LOW\\n8 - List tasks by Priority MEDIUM\\n9 - List " +
+                    "tasks by Priority HIGH\n10 - Change Status of a Task\n11 - Change Priority of a Task\n0 - To " +
+                    "exit the APP");
             int option = readOption();
 
 
@@ -44,9 +44,7 @@ public class ConsoleMenu {
                 case 1 -> AddTask();
                 case 2 -> RemoveTask();
                 case 3 -> ListAllTasks();
-                case 4 -> ListTaskFilteredByStatus(Status.TODO);
-                case 5 -> ListTaskFilteredByStatus(Status.ONGOING);
-                case 6 -> ListTaskFilteredByStatus(Status.DONE);
+                case 4 -> ListTaskFilteredByStatus();
                 case 7 -> ListTaskFilteredByPriority(Priority.LOW);
                 case 8 -> ListTaskFilteredByPriority(Priority.MEDIUM);
                 case 9 -> ListTaskFilteredByPriority(Priority.HIGH);
