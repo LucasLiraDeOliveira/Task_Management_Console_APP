@@ -47,9 +47,9 @@ public class ConsoleMenu {
                 case 4 -> ListTaskFilteredByStatus(Status.TODO);
                 case 5 -> ListTaskFilteredByStatus(Status.ONGOING);
                 case 6 -> ListTaskFilteredByStatus(Status.DONE);
-                case 6 -> ListTaskFilteredByPriority(Priority.LOW);
-                case 6 -> ListTaskFilteredByPriority(Priority.MEDIUM);
-                case 6 -> ListTaskFilteredByPriority(Priority.HIGH);
+                case 7 -> ListTaskFilteredByPriority(Priority.LOW);
+                case 8 -> ListTaskFilteredByPriority(Priority.MEDIUM);
+                case 9 -> ListTaskFilteredByPriority(Priority.HIGH);
                 case 0 -> running = false;
                 default -> System.out.println("Invalid option");
             }
