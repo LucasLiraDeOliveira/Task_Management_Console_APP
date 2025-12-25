@@ -179,4 +179,14 @@ public class ConsoleMenu {
         service.changeStatus(taskName, newStatus);
         System.out.println("Task's status updated!");
     }
+
+
+    private Status checkStatus(String statusString){
+        return switch (statusString.toUpperCase()) {
+            case "TODO" -> Status.TODO;
+            case "ONGOING" -> Status.ONGOING;
+            case "DONE" -> Status.DONE;
+            default -> Status.WRONG;
+        };
+    }
 }
