@@ -62,4 +62,13 @@ public class TaskService {
                 .findFirst()
                 .ifPresent(task -> task.setStatus(newStatus));
     }
+
+
+
+    public void changePriority(String taskName, Priority newPriority){
+        repository.findAll().stream()
+                .filter(task -> task.getName().equalsIgnoreCase(taskName))
+                .findFirst()
+                .ifPresent(task -> task.setPriority(newPriority));
+    }
 }
