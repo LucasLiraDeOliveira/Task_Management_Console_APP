@@ -80,6 +80,11 @@ The application allows the user to:
 
 This project represents my **first step** in building a structured Java portfolio and in understanding **layered architecture** before moving on to **Spring Boot**.
 
+### Ideas for a next minor version (v1.2.0):
+- When a specific list is empty, show a message informing that the list is empty instead of printing an empty list.
+- When changing a task’s status or priority, check if the task already has the selected value and inform the user if it does.
+- Improve the task listing output to make it more readable and visually pleasant in the console.
+
 ---
 
 
@@ -157,3 +162,7 @@ Funcionalidades disponíveis no menu em console:
 
 Este projeto representa meu **primeiro passo** na construção de um portfólio Java estruturado e no entendimento de **arquitetura em camadas** antes de avançar para o **Spring Boot**.
 
+### Ideias para uma próxima versão (v1.2.0):
+- Quando uma lista específica estiver vazia, exibir uma mensagem informando que ela está vazia, em vez de mostrar uma lista vazia.
+- Ao alterar o status ou a prioridade de uma tarefa, verificar se a tarefa já possui o valor selecionado e informar o usuário caso possua.
+- Melhorar a exibição da listagem de tarefas para torná-la mais legível e visualmente agradável no console.
