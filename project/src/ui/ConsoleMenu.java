@@ -25,8 +25,9 @@ public class ConsoleMenu {
         boolean running = true;
 
         System.out.println("Do you want to add some task examples to manipulate the app a little? [YES - NO]");
-        if (scanner.next().toLowerCase() == "yes"){
-            //add 5 example tasks
+        if (scanner.next().equalsIgnoreCase("yes")){
+            preFillList();
+            System.out.println("Pre-filling 5 example tasks into the List!");
         } else {
             System.out.println("Okok! List of Tasks starting empty");
         }
@@ -56,6 +57,18 @@ public class ConsoleMenu {
 
 
 
+    public void preFillList(){
+        service.addTask(new Task("Daily meeting", "Daily meeting to adjust each pearson task", Priority.LOW,
+                Status.TODO, LocalDate.of(2025,12,28)));
+        service.addTask(new Task("Giving year end gift basket", "Adjusting the destribution logistics of the task",
+                Priority.LOW, Status.TODO, LocalDate.of(2025,12,26)));
+        service.addTask(new Task("End of the year part planing", "Finishing the last details of the best firm party",
+                Priority.HIGH, Status.ONGOING, LocalDate.of(2025,12,28)));
+        service.addTask(new Task("Fixing major bug", "Major bug thaat stop our main page", Priority.HIGH, Status.DONE,
+                LocalDate.of(2025,12,12)));
+        service.addTask(new Task("Prospect clients", "Prospect new clients to the 2026 sales goal", Priority.MEDIUM,
+                Status.ONGOING, LocalDate.of(2026, 1, 7)));
+    }
 
 
     private int readOption() {
