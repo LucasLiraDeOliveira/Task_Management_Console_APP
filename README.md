@@ -4,7 +4,7 @@
 - **EN / PT**
 
 ---
-
+### (en)
 ## 📌 Project Overview
 
 This project is the first in a series of projects where I combine **practice with study**, with the goal of building a **Junior Java Developer portfolio**.
@@ -79,3 +79,81 @@ The application allows the user to:
 ## 🚀 Final Notes
 
 This project represents my **first step** in building a structured Java portfolio and in understanding **layered architecture** before moving on to **Spring Boot**.
+
+---
+
+
+
+
+
+
+### (pt-br)
+## 📌 Visão geral do projeto
+
+Este projeto é o primeiro de uma série de projetos em que **combino prática com estudo**, com o objetivo de construir um portfólio como **Desenvolvedor Java Júnior**.
+
+Trata-se de uma **aplicação de gerenciamento de tarefas em console**, onde o usuário pode escolher ações a partir de um menu, como:
+
+- adicionar tarefas 
+- remover tarefas 
+- listar tarefas 
+- alterar suas características.
+
+---
+
+## 🏗️ Arquitetura
+
+Como este é um **projeto pré–Spring Boot**, optei por utilizar uma **Arquitetura em Camadas** com:
+- Main
+- UI
+- Service
+- Repository
+- Model 
+
+Implementar essa arquitetura antes do Spring Boot trouxe alguns desafios:
+- Entender como as camadas se comunicam 
+- Qual é a responsabilidade de cada uma das camadas
+
+Pesquisei em fóruns, vídeos e utilizei IA para esclarecer esses conceitos. 
+ Hoje tudo está muito mais claro, mas sei que ainda preciso de prática para consolidar esse conhecimento.
+
+---
+
+## 🔍 Explicando cada camada
+
+Agora vou comentar um pouco camada por camada, desde a entrada do usuário até o salvamento dos dados:
+
+### Main
+Mesmo a classe `Main` não sendo uma camada em si, achei importante comentá-la. 
+Entender que seu papel é **“apenas” instanciar objetos e iniciar a aplicação em console** foi o que fez a comunicação entre as camadas finalmente fazer sentido para mim.
+
+### UI
+A camada de UI representa o **“frontend”** da aplicação. É nela que o usuário interage com o sistema através do menu em console, onde as entradas são recebidas e validações básicas são feitas antes de os dados serem enviados para a camada de serviço.
+
+### Service
+A camada de Service é responsável pela lógica de negócio e pelas operações com streams. Foi a parte que mais me interessou, pois queria colocar em prática o uso de **Java Streams** — um recurso que antes me deixava um pouco “em alerta”.
+
+### Repository
+Como ainda não estou utilizando persistência de dados, a camada Repository é responsável por gerenciar os dados **em memória** utilizando um HashSet.
+
+### Model
+A camada Model contém as classes que representam o domínio da aplicação. Considerei adicionar mais complexidade aos enums, mas após avaliar o valor que isso agregaria, decidi manter o modelo **simples e focado**.
+
+---
+
+## 📋 Funções do menu do console
+
+Funcionalidades disponíveis no menu em console:
+
+- Adicionar uma tarefa  
+- Remover uma tarefa  
+- Listar todas as tarefas  
+- Listar tarefas por status (**TODO**, **ONGOING**, **DONE**)  
+- Encerrar a aplicação  
+
+---
+
+## 🚀 Notas finais
+
+Este projeto representa meu **primeiro passo** na construção de um portfólio Java estruturado e no entendimento de **arquitetura em camadas** antes de avançar para o **Spring Boot**.
+
