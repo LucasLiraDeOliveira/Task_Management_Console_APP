@@ -71,7 +71,10 @@ The application allows the user to:
 - Add a task  
 - Remove a task  
 - List all tasks  
-- List tasks by status (**TODO**, **ONGOING**, **DONE**)  
+- List tasks by an specific status 
+- List tasks by an specific priority
+- Change the status of a task  
+- Change the priority of a task  
 - Exit the application  
 
 ---
@@ -139,7 +142,7 @@ A camada de UI representa o **“frontend”** da aplicação. É nela que o usu
 A camada de Service é responsável pela lógica de negócio e pelas operações com streams. Foi a parte que mais me interessou, pois queria colocar em prática o uso de **Java Streams** — um recurso que antes me deixava um pouco “em alerta”.
 
 ### Repository
-Como ainda não estou utilizando persistência de dados, a camada Repository é responsável por gerenciar os dados **em memória** utilizando um HashSet.
+Como ainda não estou utilizando persistência de dados, a camada Repository é responsável por gerenciar os dados **em memória** utilizando um `HashSet`.
 
 ### Model
 A camada Model contém as classes que representam o domínio da aplicação. Considerei adicionar mais complexidade aos enums, mas após avaliar o valor que isso agregaria, decidi manter o modelo **simples e focado**.
@@ -153,7 +156,10 @@ Funcionalidades disponíveis no menu em console:
 - Adicionar uma tarefa  
 - Remover uma tarefa  
 - Listar todas as tarefas  
-- Listar tarefas por status (**TODO**, **ONGOING**, **DONE**)  
+- Listar tarefas por status específico
+- Listar tarefas por prioridade específica
+- Mudar o status de uma tarefa específica
+- Mudar a prioridade de uma tarefa específica
 - Encerrar a aplicação  
 
 ---
