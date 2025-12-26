@@ -28,7 +28,7 @@ public class ConsoleMenu {
         if (scanner.next().toLowerCase() == "yes"){
             //add 5 example tasks
         } else {
-            System.out.println("Okok! Console app starting empty");
+            System.out.println("Okok! List of Tasks starting empty");
         }
 
         while (running){
@@ -105,12 +105,12 @@ public class ConsoleMenu {
             try {
                 priority = Priority.valueOf(input.toUpperCase());
             } catch (IllegalArgumentException e) {
-                System.out.println("Invalid priority. Try again.");
+                System.out.println("Invalid priority. Try again.\n");
             }
         }
 
 
-        System.out.println("What's the time limit for this Task?");
+        System.out.println("\nWhat's the time limit for this Task?");
         System.out.println("Year (YYYY format): ");
         int year = scanner.nextInt();
 
@@ -136,6 +136,7 @@ public class ConsoleMenu {
 
 
     private void ListAllTasks(){
+        System.out.println("\n\nList of all Tasks:");
         List<Task> tasks = service.listAllTasks();
         tasks.forEach(System.out::println);
     }
@@ -143,6 +144,7 @@ public class ConsoleMenu {
 
     private void ListTaskFilteredByStatus(){
         Status status = checkStatus();
+        System.out.println("\n\nList of all Tasks with " + status + " status:");
         List<Task> tasksFiltereed = service.listByStatus(status);
         tasksFiltereed.forEach(System.out::println);
     }
@@ -150,6 +152,7 @@ public class ConsoleMenu {
 
     private void ListTaskFilteredByPriority(){
         Priority priority = checkPriority();
+        System.out.println("\n\nList of all Tasks with " + priority + " priority:");
         List<Task> tasksFiltereed = service.listByPriority(priority);
         tasksFiltereed.forEach(System.out::println);
     }
@@ -185,7 +188,7 @@ public class ConsoleMenu {
             };
 
             if (newStatus.equals(Status.WRONG)) {
-                System.out.println("Wrong status typed! Please write one of the correct options!");
+                System.out.println("Wrong status typed! Please write one of the correct options!\n");
                 continue;
             }
             condition = false;
@@ -224,8 +227,8 @@ public class ConsoleMenu {
                 default -> newPriority = Priority.WRONG;
             };
 
-            if (newPriority.equals(Status.WRONG)) {
-                System.out.println("Wrong status typed! Please write one of the correct options!");
+            if (newPriority.equals(Priority.WRONG)) {
+                System.out.println("Wrong status typed! Please write one of the correct options!\n");
                 continue;
             }
             condition = false;
